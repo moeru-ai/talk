@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react'
 import { Flex, Heading, IconButton, Text } from '@radix-ui/themes'
 
+import { Settings } from './settings'
+
 export const Header = () => (
   <Flex align="center" direction="row">
     <Text>moe</Text>
@@ -9,9 +11,7 @@ export const Header = () => (
       <IconButton color="gray" onClick={() => window.open('https://github.com/moeru-ai/talk')} variant="ghost">
         <Icon icon="simple-icons:github" />
       </IconButton>
-      <IconButton color="gray" variant="ghost">
-        <Icon icon="heroicons:adjustments-horizontal" />
-      </IconButton>
+      <Settings />
     </Flex>
   </Flex>
 )
