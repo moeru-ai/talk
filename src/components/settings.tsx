@@ -11,8 +11,8 @@ export const Settings = () => (
       </IconButton>
     </Sheet.Trigger>
 
-    <Sheet.Content maxWidth="450px">
-      <Sheet.Title>Edit profile</Sheet.Title>
+    <Sheet.Content>
+      <Sheet.Title>Settings</Sheet.Title>
       <Sheet.Description mb="4" size="2">
         Make changes to your profile.
       </Sheet.Description>
