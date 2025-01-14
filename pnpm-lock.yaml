@@ -32,6 +32,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      virtua:
+        specifier: ^0.39.3
+        version: 0.39.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.14.0
@@ -2745,6 +2748,26 @@ packages:
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
+
+  virtua@0.39.3:
+    resolution: {integrity: sha512-Ep3aiJXSGPm1UUniThr5mGDfG0upAleP7pqQs5mvvCgM1wPhII1ZKa7eNCWAJRLkC+InpXKokKozyaaj/aMYOQ==}
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+      solid-js: '>=1.0'
+      svelte: '>=5.0'
+      vue: '>=3.2'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      solid-js:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
 
   vite-plugin-stylex@0.13.0:
     resolution: {integrity: sha512-kT44CpS8dprH+Idiff9eblsVoGCiRueRJwT6EdM7E+mbdSfHjqWI5e0kiaNebdsaacHiyhmkgPXeTfJahTXrsA==}
@@ -5939,6 +5962,11 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  virtua@0.39.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    optionalDependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   vite-plugin-stylex@0.13.0(@stylexjs/stylex@0.10.0)(vite@6.0.7(yaml@2.7.0)):
     dependencies:

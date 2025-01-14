@@ -18,7 +18,8 @@
     "@uiw/react-use-online": "^1.0.0",
     "foxact": "^0.2.43",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "virtua": "^0.39.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
