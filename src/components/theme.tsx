@@ -9,7 +9,7 @@ import {
   useThemePanelBackground,
   useThemeRadius,
   useThemeScaling,
-} from '../hooks/theme'
+} from '../hooks/use-theme'
 
 export const Theme = ({ children }: PropsWithChildren) => {
   const colorScheme = useColorScheme()
