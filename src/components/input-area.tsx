@@ -11,10 +11,10 @@ export const InputArea = () => (
       variant="soft"
     />
     <Flex gap="2">
-      <IconButton color="gray" variant="soft">
-        <Icon icon="heroicons:document-plus" />
+      <IconButton color="gray" disabled variant="soft">
+        <Icon icon="heroicons:paper-clip" />
       </IconButton>
-      <IconButton color="gray" variant="soft">
+      <IconButton color="gray" disabled variant="soft">
         <Icon icon="heroicons:microphone" />
       </IconButton>
       <Button style={{ alignSelf: 'flex-end', marginInlineStart: 'auto' }} variant="soft">
