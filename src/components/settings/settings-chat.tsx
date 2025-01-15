@@ -1,23 +1,14 @@
-import type { Model } from '@xsai/model'
-
 import { Icon } from '@iconify/react'
 import { Select, Separator, Text, TextField } from '@radix-ui/themes'
-import { listModels } from '@xsai/model'
-import { useEffect, useState } from 'react'
 
+import { useListModels } from '../../hooks/xsai/use-list-models'
 import * as Sheet from '../ui/sheet'
 
 export const SettingsChat = () => {
   // TODO: support provider
   const baseURL = 'http://localhost:11434/v1/'
 
-  const [models, setModels] = useState<Model[]>([])
-
-  useEffect(() => {
-    void listModels({ baseURL })
-      .then(models => setModels(models))
-      .catch(console.error)
-  }, [baseURL])
+  const { models } = useListModels({ baseURL })
 
   return (
     <>
