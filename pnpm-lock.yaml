@@ -23,6 +23,9 @@ importers:
       '@uiw/react-use-online':
         specifier: ^1.0.0
         version: 1.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@xsai/model':
+        specifier: ^0.0.27
+        version: 0.0.27
       foxact:
         specifier: ^0.2.43
         version: 0.2.43(react@19.0.0)
@@ -1438,6 +1441,12 @@ packages:
 
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
+
+  '@xsai/model@0.0.27':
+    resolution: {integrity: sha512-2ckL7bLscS+viib7zi/gFS4M55Q7hi19cfDmSWNOXJ7ELCoFo6n2A2BWTuNXye/K5kfU6/StNYo9kvxGL2CQyQ==}
+
+  '@xsai/shared@0.0.27':
+    resolution: {integrity: sha512-U+lvjD6HdX3xJq57ASoDXk7z12zKTBwuDb30oRuaCq2+jBxUcMbXTMtWbI1EJL/TDNFtrXBjpLj35/7Q6LXUDQ==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -4388,6 +4397,12 @@ snapshots:
       '@vue/shared': 3.5.13
 
   '@vue/shared@3.5.13': {}
+
+  '@xsai/model@0.0.27':
+    dependencies:
+      '@xsai/shared': 0.0.27
+
+  '@xsai/shared@0.0.27': {}
 
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:

@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react'
-import { Button, Flex, IconButton, Text, TextField } from '@radix-ui/themes'
+import { Button, Flex, IconButton, Separator } from '@radix-ui/themes'
 
+import { SettingsChat } from './settings/settings-chat'
+import { SettingsTheme } from './settings/settings-theme'
 import * as Sheet from './ui/sheet'
 
 export const Settings = () => (
@@ -12,30 +14,10 @@ export const Settings = () => (
     </Sheet.Trigger>
 
     <Sheet.Content>
-      <Sheet.Title>Settings</Sheet.Title>
-      <Sheet.Description mb="4" size="2">
-        Make changes to your profile.
-      </Sheet.Description>
-
       <Flex direction="column" gap="3">
-        <label>
-          <Text as="div" mb="1" size="2" weight="bold">
-            Name
-          </Text>
-          <TextField.Root
-            defaultValue="Freja Johnsen"
-            placeholder="Enter your full name"
-          />
-        </label>
-        <label>
-          <Text as="div" mb="1" size="2" weight="bold">
-            Email
-          </Text>
-          <TextField.Root
-            defaultValue="freja@example.com"
-            placeholder="Enter your email"
-          />
-        </label>
+        <SettingsChat />
+        <Separator my="3" size="4" />
+        <SettingsTheme />
       </Flex>
 
       <Flex gap="3" justify="end" mt="4">
