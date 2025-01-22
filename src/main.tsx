@@ -7,6 +7,7 @@ import '@radix-ui/themes/styles.css'
 
 import './main.css'
 
+// eslint-disable-next-line @masknet/no-top-level
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

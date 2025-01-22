@@ -15,15 +15,18 @@ export const Theme = ({ children }: PropsWithChildren) => {
   const colorScheme = useColorScheme()
 
   const [accentColor] = useThemeAccentColor()
-  const [appearance] = useThemeAppearance()
+  const [themeAppearance] = useThemeAppearance()
   const [panelBackground] = useThemePanelBackground()
   const [radius] = useThemeRadius()
   const [scaling] = useThemeScaling()
 
+  // eslint-disable-next-line sonarjs/no-nested-conditional
+  const appearance = themeAppearance === 'system' ? (colorScheme === 'dark' ? 'dark' : 'light') : themeAppearance
+
   return (
     <RadixTheme
       accentColor={accentColor}
-      appearance={appearance === 'system' ? (colorScheme === 'dark' ? 'dark' : 'light') : appearance}
+      appearance={appearance}
       panelBackground={panelBackground}
       radius={radius}
       scaling={scaling}

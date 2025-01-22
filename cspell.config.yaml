@@ -1,4 +1,4 @@
-version: "0.2"
+version: '0.2'
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
@@ -7,9 +7,11 @@ words:
   - foxact
   - iconify
   - importantimport
+  - masknet
   - moeru
   - moetalk
   - ollama
+  - sonarjs
   - stylex
   - xsai
 ignoreWords: []

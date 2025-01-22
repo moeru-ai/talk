@@ -7,17 +7,20 @@ import { Settings } from './settings'
 export const Header = () => {
   const isOnline = useOnline()
 
+  const badgeColor = isOnline ? 'green' : 'red'
+  const badgeText = isOnline ? 'Online' : 'Offline'
+
   return (
     <Flex align="center" direction="row" gap="2" p="2">
       <Flex align="center">
         <Text>moe</Text>
         <Heading size="3">TALK</Heading>
       </Flex>
-      <Badge color={isOnline ? 'green' : 'red'}>
-        {isOnline ? 'Online' : 'Offline'}
+      <Badge color={badgeColor}>
+        {badgeText}
       </Badge>
       <Flex align="center" gap="4" style={{ alignSelf: 'flex-end', marginBottom: 'auto', marginLeft: 'auto', marginTop: 'auto' }}>
-        <IconButton color="gray" onClick={() => window.open('https://github.com/moeru-ai/talk')} variant="ghost">
+        <IconButton color="gray" data-test-id="github" onClick={() => window.open('https://github.com/moeru-ai/talk', 'WindowName', 'noopener')} variant="ghost">
           <Icon icon="simple-icons:github" />
         </IconButton>
         <Settings />

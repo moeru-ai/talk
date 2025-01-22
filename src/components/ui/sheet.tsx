@@ -1,3 +1,4 @@
+/* eslint-disable @masknet/no-top-level */
 import type { ComponentPropsWithout, RemovedProps } from '@radix-ui/themes/helpers'
 import type { DialogContentOwnProps } from '@radix-ui/themes/props'
 import type { ComponentRef, FC } from 'react'
