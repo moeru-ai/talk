@@ -1,5 +1,6 @@
 import antfu from '@antfu/eslint-config'
-import ii from '@importantimport/eslint-config'
+import { ii } from '@importantimport/eslint-config'
+// @ts-expect-error missing types
 import reactCompiler from 'eslint-plugin-react-compiler'
 
 export default antfu({
@@ -7,7 +8,4 @@ export default antfu({
   typescript: { tsconfigPath: './tsconfig.json' },
 })
   .append(ii())
-  .append({
-    plugins: { 'react-compiler': reactCompiler },
-    rules: { 'react-compiler/react-compiler': 'error' },
-  })
+  .append(reactCompiler.config.recommended)

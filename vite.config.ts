@@ -4,6 +4,7 @@ import stylex from 'vite-plugin-stylex'
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: { target: 'esnext' },
   plugins: [
     react({
       babel: { plugins: [
