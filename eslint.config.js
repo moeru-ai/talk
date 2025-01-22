@@ -8,4 +8,8 @@ export default antfu({
   typescript: { tsconfigPath: './tsconfig.json' },
 })
   .append(ii())
-  .append(reactCompiler.config.recommended)
+  .append(reactCompiler.configs.recommended)
+  // .append({
+  //   plugins: { 'react-compiler': reactCompiler },
+  //   rules: { 'react-compiler/react-compiler': 'error' }
+  // })
