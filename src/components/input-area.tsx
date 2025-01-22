@@ -1,9 +1,10 @@
 import type { Message } from '@xsai/shared-chat'
 
 import { Icon } from '@iconify/react'
-import { Button, Flex, IconButton, TextArea } from '@radix-ui/themes'
+import { Button, Flex, IconButton, Text, TextArea } from '@radix-ui/themes'
 import generateText from '@xsai/generate-text'
 import { ollama } from '@xsai/providers'
+import { useState } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 import { useMessages, useSetMessages } from '../context/messages'
@@ -14,10 +15,11 @@ export interface Inputs {
 }
 
 export const InputArea = () => {
+  const [chatModel] = useChatModel()
   const messages = useMessages()
   const setMessages = useSetMessages()
 
-  const [chatModel] = useChatModel()
+  const [isTyping, setIsTyping] = useState(false)
 
   const {
     // formState: { errors },
@@ -32,6 +34,7 @@ export const InputArea = () => {
 
     setMessages(msg)
     resetField('content')
+    setIsTyping(true)
 
     const { text } = await generateText({
       ...ollama.chat(chatModel as string),
@@ -39,12 +42,19 @@ export const InputArea = () => {
     })
 
     setMessages([...msg, { content: text, role: 'assistant' }])
+    setIsTyping(false)
   }
 
   return (
     // eslint-disable-next-line ts/no-misused-promises
     <form data-test-id="input-area" onSubmit={handleSubmit(onSubmit)}>
       <Flex direction="column" gap="2" style={{ alignSelf: 'flex-end', marginTop: 'auto' }} width="100%">
+        {isTyping && (
+          <Flex align="center" gap="2">
+            <Icon icon="svg-spinners:3-dots-scale" />
+            <Text>Bot is typing</Text>
+          </Flex>
+        )}
         <TextArea
           color="gray"
           placeholder="Write a Message..."
