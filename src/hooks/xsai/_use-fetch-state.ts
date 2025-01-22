@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 /** @internal */
-export const useFetchState = <T>(getData: () => Promise<T>, initialState: null | T = null) => {
-  const [data, setData] = useState<null | T>(initialState)
+export const useFetchState = <T>(getData: () => Promise<T>, initialState: T) => {
+  const [data, setData] = useState<T>(initialState)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
