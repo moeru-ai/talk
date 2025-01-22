@@ -1,8 +1,9 @@
-import { Card, Flex, ScrollArea, Text } from '@radix-ui/themes'
+import { Card, Flex, ScrollArea } from '@radix-ui/themes'
 import { useEffect, useRef } from 'react'
 import { Virtualizer, type VirtualizerHandle } from 'virtua'
 
 import { useMessages } from '../context/messages'
+import { Content } from './content'
 
 export const Messages = () => {
   const ref = useRef<VirtualizerHandle>(null)
@@ -38,9 +39,7 @@ export const Messages = () => {
               mt="2"
             >
               <Card style={cardStyle}>
-                <Text>
-                  {message.content as string}
-                </Text>
+                <Content content={message.content as string} />
               </Card>
             </Flex>
           )
