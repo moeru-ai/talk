@@ -1,11 +1,14 @@
 import { Icon } from '@iconify/react'
 import { Select, Separator, Text, TextField } from '@radix-ui/themes'
 
+import { useChatModel, useEmbedModel } from '../../hooks/use-model'
 import { useListModels } from '../../hooks/xsai/use-list-models'
 import * as Sheet from '../ui/sheet'
 
 export const SettingsChat = () => {
-  // TODO: support provider
+  const [chatModel, setChatModel] = useChatModel()
+  const [embedModel, setEmbedModel] = useEmbedModel()
+
   const baseURL = 'http://localhost:11434/v1/'
 
   const { models } = useListModels({ baseURL })
@@ -46,7 +49,7 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Base URL
         </Text>
-        <TextField.Root placeholder="https://openai.com/v1/">
+        <TextField.Root disabled placeholder="https://openai.com/v1/">
           <TextField.Slot />
         </TextField.Root>
       </label>
@@ -55,7 +58,7 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           API Key
         </Text>
-        <TextField.Root placeholder="sk-abcdefghijklmnop123">
+        <TextField.Root disabled placeholder="sk-abcdefghijklmnop123">
           <TextField.Slot />
         </TextField.Root>
       </label>
@@ -64,9 +67,23 @@ export const SettingsChat = () => {
 
       <label>
         <Text as="div" mb="1" weight="bold">
-          Model
+          Chat Model
         </Text>
-        <Select.Root>
+        <Select.Root defaultValue={chatModel ?? undefined} onValueChange={setChatModel}>
+          <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
+          <Select.Content position="popper">
+            {models.map(model => (
+              <Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Root>
+      </label>
+
+      <label>
+        <Text as="div" mb="1" weight="bold">
+          Embed Model
+        </Text>
+        <Select.Root defaultValue={embedModel ?? undefined} onValueChange={setEmbedModel}>
           <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
           <Select.Content position="popper">
             {models.map(model => (

@@ -16,10 +16,14 @@
     "@stylexjs/stylex": "^0.10.1",
     "@uiw/react-use-colorscheme": "^1.0.0",
     "@uiw/react-use-online": "^1.0.0",
+    "@xsai/generate-text": "^0.0.29",
     "@xsai/model": "^0.0.29",
+    "@xsai/providers": "^0.0.29",
+    "@xsai/shared-chat": "^0.0.29",
     "foxact": "^0.2.43",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
     "virtua": "^0.39.3"
   },
   "devDependencies": {

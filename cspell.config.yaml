@@ -1,4 +1,4 @@
-version: '0.2'
+version: "0.2"
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
@@ -13,6 +13,7 @@ words:
   - ollama
   - sonarjs
   - stylex
+  - virtua
   - xsai
 ignoreWords: []
 import: []
