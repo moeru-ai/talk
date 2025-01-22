@@ -51,7 +51,7 @@ export const InputArea = () => {
           resize="vertical"
           size="3"
           variant="soft"
-          {...register('content')}
+          {...register('content', { minLength: 1, required: true })}
         />
         <Flex gap="2">
           <IconButton color="gray" disabled variant="soft">
