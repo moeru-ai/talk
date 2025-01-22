@@ -1,28 +1,10 @@
-import type { ListModelsOptions, Model } from '@xsai/model'
+import type { ListModelsOptions } from '@xsai/model'
 
 import { listModels } from '@xsai/model'
-import { useEffect, useState } from 'react'
+import { useFetchState } from './_use-fetch-state'
 
 export const useListModels = (options: ListModelsOptions) => {
-  const [models, setModels] = useState<Model[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+  const { data, error, isLoading } = useFetchState(async () => await listModels(options), [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const models = await listModels(options)
-        setModels(models)
-      }
-      catch (error) {
-        setError(error as Error)
-      }
-      finally {
-        setIsLoading(false)
-      }
-    }
-    void fetchData()
-  }, [options])
-
-  return { error, isLoading, models }
+  return { error, isLoading, models: data }
 }
