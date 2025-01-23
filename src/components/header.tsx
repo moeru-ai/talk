@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { Badge, Flex, Heading, IconButton, Text } from '@radix-ui/themes'
+import { Badge, Flex, Heading, IconButton, Text, Tooltip } from '@radix-ui/themes'
 import { useOnline } from '@uiw/react-use-online'
 
 import { Settings } from './settings'
@@ -20,9 +20,11 @@ export const Header = () => {
         {badgeText}
       </Badge>
       <Flex align="center" gap="4" style={{ alignSelf: 'flex-end', marginBottom: 'auto', marginLeft: 'auto', marginTop: 'auto' }}>
-        <IconButton color="gray" data-test-id="github" onClick={() => window.open('https://github.com/moeru-ai/talk', 'WindowName', 'noopener')} variant="ghost">
-          <Icon icon="simple-icons:github" />
-        </IconButton>
+        <Tooltip content="GitHub">
+          <IconButton color="gray" data-test-id="github" onClick={() => window.open('https://github.com/moeru-ai/talk', 'WindowName', 'noopener')} variant="ghost">
+            <Icon icon="simple-icons:github" />
+          </IconButton>
+        </Tooltip>
         <Settings />
       </Flex>
     </Flex>
