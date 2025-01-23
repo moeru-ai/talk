@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react'
 import { Avatar, Box, Flex, IconButton, ScrollArea, Tooltip } from '@radix-ui/themes'
 
+import { SidebarNewCharacter } from './sidebar-new-character'
+
 export const Sidebar = () => (
   <Box display={{ initial: 'none', md: 'block' }}>
     <Box
@@ -25,11 +27,7 @@ export const Sidebar = () => (
           <Avatar color="gray" fallback="B" size="4" />
           <Avatar color="gray" fallback="C" size="4" />
           <Avatar color="gray" fallback="D" size="4" /> */}
-          <Tooltip content="Add a new character" side="right">
-            <IconButton size="4" variant="soft">
-              <Icon icon="heroicons:plus" width="20" />
-            </IconButton>
-          </Tooltip>
+          <SidebarNewCharacter />
         </Flex>
       </ScrollArea>
     </Box>
