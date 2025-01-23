@@ -8,6 +8,11 @@ export default antfu({
   typescript: { tsconfigPath: './tsconfig.json' },
 })
   .append(ii())
+  .append({
+    rules: {
+      'sonarjs/todo-tag': 'warn',
+    },
+  })
   .append(reactCompiler.configs.recommended)
   // .append({
   //   plugins: { 'react-compiler': reactCompiler },

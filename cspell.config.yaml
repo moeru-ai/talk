@@ -3,15 +3,19 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - chara
   - eslintcache
   - foxact
   - iconify
   - importantimport
   - kwaa
+  - kwaroran
   - masknet
   - moeru
   - moetalk
   - ollama
+  - risu
+  - roleplay
   - sonarjs
   - virtua
   - xsai
