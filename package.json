@@ -6,6 +6,7 @@
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "tsc -b && vite build",
+    "db:generate": "drizzle-kit generate",
     "dev": "vite",
     "lint": "eslint --cache .",
     "preview": "vite preview"
@@ -20,7 +21,9 @@
     "@xsai/model": "^0.0.29",
     "@xsai/providers": "^0.0.29",
     "@xsai/shared-chat": "^0.0.29",
+    "drizzle-orm": "^0.38.4",
     "foxact": "^0.2.43",
+    "limbo-wasm": "^0.0.13",
     "meta-png": "^1.0.6",
     "react": "^19.0.0",
     "react-aria-components": "^1.6.0",
@@ -43,6 +46,7 @@
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-plugin-react-compiler": "19.0.0-beta-decd7b8-20250118",
+    "drizzle-kit": "^0.30.2",
     "eslint": "^9.18.0",
     "eslint-plugin-react-compiler": "19.0.0-beta-decd7b8-20250118",
     "eslint-plugin-react-hooks": "^5.1.0",
