@@ -60,6 +60,7 @@ export const InputArea = () => {
           placeholder="Write a Message..."
           resize="vertical"
           size="3"
+          style={{ maxHeight: '50vh' }}
           variant="soft"
           {...register('content', { minLength: 1, required: true })}
         />
