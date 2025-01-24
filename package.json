@@ -20,6 +20,7 @@
     "@xsai/providers": "^0.0.29",
     "@xsai/shared-chat": "^0.0.29",
     "foxact": "^0.2.43",
+    "meta-png": "^1.0.6",
     "react": "^19.0.0",
     "react-aria-components": "^1.6.0",
     "react-dom": "^19.0.0",

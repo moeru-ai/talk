@@ -1,14 +1,12 @@
 import { Icon } from '@iconify/react'
 import { Button, Dialog, Flex, IconButton, Separator, TextField, Tooltip } from '@radix-ui/themes'
-import { useState } from 'react'
 import { FileTrigger } from 'react-aria-components'
 
+import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { Button as AriaButton } from './aria/button'
 import { DropZone } from './aria/drop-zone'
 
 export const SidebarNewCharacter = () => {
-  const [files, setFiles] = useState<string>('')
-
   return (
     <Dialog.Root>
       <Tooltip content="Add a new character" side="right">
@@ -29,11 +27,22 @@ export const SidebarNewCharacter = () => {
           <DropZone>
             <FileTrigger
               acceptedFileTypes={['application/json', 'image/png']}
-              onSelect={(e) => {
+              // eslint-disable-next-line ts/no-misused-promises
+              onSelect={async (e) => {
                 if (!e)
                   return
 
-                setFiles(e[0].name)
+                const file = e[0]
+                // TODO: is-png
+                const buffer = await file.arrayBuffer()
+                // eslint-disable-next-line @masknet/array-prefer-from
+                const png = new Uint8Array(buffer)
+                const json = parseCharacterCardPNG(png)
+
+                // TODO: remove this
+                if (json !== undefined)
+                  // eslint-disable-next-line no-console
+                  console.log(json)
               }}
             >
               <AriaButton>
@@ -41,7 +50,6 @@ export const SidebarNewCharacter = () => {
                 Select file
               </AriaButton>
             </FileTrigger>
-            {files}
           </DropZone>
 
           <Separator my="3" size="3" />
