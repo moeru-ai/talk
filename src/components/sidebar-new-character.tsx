@@ -49,7 +49,7 @@ export const SidebarNewCharacter = () => {
           <TextField.Root disabled placeholder="f3f2e850-b5d4-11ef-ac7e-96584d5248b2" />
           <Button disabled>
             <Icon icon="heroicons:arrow-down-tray" inline />
-            Download from RisuAI Realms
+            Download from RisuRealm
           </Button>
         </Flex>
 
