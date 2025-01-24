@@ -28,9 +28,6 @@ export const Settings = () => (
             Cancel
           </Button>
         </Sheet.Close>
-        <Sheet.Close>
-          <Button>Save</Button>
-        </Sheet.Close>
       </Flex>
     </Sheet.Content>
   </Sheet.Root>
