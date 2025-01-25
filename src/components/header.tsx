@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Badge, Flex, Heading, IconButton, Text, Tooltip } from '@radix-ui/themes'
 import { useOnline } from '@uiw/react-use-online'
+
 import { Settings } from './settings'
 
 export const Header = () => {

@@ -1,8 +1,12 @@
-import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const usersTable = sqliteTable('users_table', {
-  age: int().notNull(),
-  email: text().notNull().unique(),
-  id: int().primaryKey({ autoIncrement: true }),
+export const charactersTable = sqliteTable('characters_table', {
+  // uuid v7
+  id: text().primaryKey(),
+  // character card name
   name: text().notNull(),
+  // png blob
+  avatar: text({ mode: 'json' }),
+  // character card data json
+  data: text({ mode: 'json' }).notNull()
 })
