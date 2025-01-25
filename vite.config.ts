@@ -5,10 +5,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: { target: 'esnext' },
   optimizeDeps: {
-    exclude: ['@libsql/client-wasm'],
     esbuildOptions: {
-      target: 'esnext'
-    }
+      target: 'esnext',
+    },
+    exclude: ['@libsql/client-wasm'],
   },
   plugins: [
     react({

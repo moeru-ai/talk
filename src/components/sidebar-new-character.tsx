@@ -1,14 +1,16 @@
 import { Icon } from '@iconify/react'
 import { Button, Dialog, Flex, IconButton, Separator, TextField, Tooltip } from '@radix-ui/themes'
+import { useState } from 'react'
 import { FileTrigger } from 'react-aria-components'
 
-import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { Button as AriaButton } from './aria/button'
 import { DropZone } from './aria/drop-zone'
 
-export const SidebarNewCharacter = () => {
+export const SidebarNewCharacter = ({ handleSelect }: { handleSelect: (e: FileList | null) => Promise<void> }) => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog.Root>
+    <Dialog.Root onOpenChange={setOpen} open={open}>
       <Tooltip content="Add a new character" side="right">
         <Dialog.Trigger>
           <IconButton size="4" variant="soft">
@@ -27,23 +29,9 @@ export const SidebarNewCharacter = () => {
           <DropZone>
             <FileTrigger
               acceptedFileTypes={['application/json', 'image/png']}
-              // eslint-disable-next-line ts/no-misused-promises
-              onSelect={async (e) => {
-                if (!e)
-                  return
 
-                const file = e[0]
-                // TODO: is-png
-                const buffer = await file.arrayBuffer()
-                // eslint-disable-next-line @masknet/array-prefer-from
-                const png = new Uint8Array(buffer)
-                const json = parseCharacterCardPNG(png)
-
-                // TODO: remove this
-                if (json !== undefined)
-                  // eslint-disable-next-line no-console
-                  console.log(json)
-              }}
+              // eslint-disable-next-line @masknet/no-then, ts/no-misused-promises
+              onSelect={async e => handleSelect(e).then(() => setOpen(false))}
             >
               <AriaButton>
                 <Icon icon="heroicons:document-plus" inline />

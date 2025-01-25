@@ -65,6 +65,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.0
+      uuid:
+        specifier: ^11.0.5
+        version: 11.0.5
       virtua:
         specifier: ^0.39.3
         version: 0.39.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -5124,6 +5127,10 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+    hasBin: true
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
@@ -11559,6 +11566,8 @@ snapshots:
       react: 19.0.0
 
   util-deprecate@1.0.2: {}
+
+  uuid@11.0.5: {}
 
   validate-npm-package-license@3.0.4:
     dependencies:
