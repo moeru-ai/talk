@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "tsc -b && vite build",
-    "db:generate": "drizzle-kit generate",
+    "db:generate": "drizzle-kit generate --name init --prefix index",
     "dev": "vite",
     "lint": "eslint --cache .",
     "preview": "vite preview"
