@@ -1,13 +1,13 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3'
-import { Database } from 'limbo-wasm'
+import { drizzle } from 'drizzle-orm/libsql/wasm'
+import { createClient } from '@libsql/client-wasm'
 
-import migrations from './generated/0000_brown_mandroid.sql?raw'
+import migrations from './generated/0000_dark_captain_flint.sql?raw'
 import { usersTable } from './schema'
 
-const client = new Database('moetalk.db')
+const client = createClient({ url: 'file:moetalk.db' })
 
 // eslint-disable-next-line @masknet/no-top-level
-client.exec(migrations)
+client.execute(migrations)
 
 export const db = drizzle({ client })
 

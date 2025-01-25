@@ -4,6 +4,12 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   build: { target: 'esnext' },
+  optimizeDeps: {
+    exclude: ['@libsql/client-wasm'],
+    esbuildOptions: {
+      target: 'esnext'
+    }
+  },
   plugins: [
     react({
       babel: { plugins: [

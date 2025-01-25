@@ -17,13 +17,17 @@ export const Header = () => {
   const [userName, setUserName] = useState<string>('')
 
   useEffect(() => {
-    const user = db.select()
+    const getUser = async () => {
+      const user = await db.select()
       .from(usersTable)
       .where(eq(usersTable.name, 'John'))
       .get()
 
     if (user)
       setUserName(user.name)
+    }
+
+    void getUser()
   }, [])
 
   return (

@@ -11,6 +11,9 @@ importers:
       '@iconify/react':
         specifier: ^5.2.0
         version: 5.2.0(react@19.0.0)
+      '@libsql/client-wasm':
+        specifier: ^0.14.0
+        version: 0.14.0
       '@radix-ui/react-dialog':
         specifier: ^1.1.4
         version: 1.1.4(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -37,13 +40,10 @@ importers:
         version: 0.0.29
       drizzle-orm:
         specifier: ^0.38.4
-        version: 0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0)
+        version: 0.38.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0)
       foxact:
         specifier: ^0.2.43
         version: 0.2.43(react@19.0.0)
-      limbo-wasm:
-        specifier: ^0.0.13
-        version: 0.0.13
       meta-png:
         specifier: ^1.0.6
         version: 1.0.6
@@ -1400,6 +1400,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@libsql/client-wasm@0.14.0':
+    resolution: {integrity: sha512-gB/jtz0xuwrqAHApBv9e9JSew2030Fhj2edyZ83InZ4yPj/Q2LTUlEhaspEYT0T0xsAGqPy38uGrmq/OGS+DdQ==}
+    bundledDependencies:
+      - '@libsql/libsql-wasm-experimental'
 
   '@libsql/client@0.14.0':
     resolution: {integrity: sha512-/9HEKfn6fwXB5aTEEoMeFh4CtG0ZzbncBb1e++OCdVpgKZ/xyMsIVYXm0w7Pv4RUel803vE6LwniB3PqD72R0Q==}
@@ -4212,9 +4217,6 @@ packages:
     resolution: {integrity: sha512-FmGoeD4S05ewj+AkhTY+D+myDvXI6eL27FjHIjoyUkO/uw7WZD1fBVs0QxeYWa7E17CUHJaYX/RUGISCtcrG4Q==}
     engines: {node: '>= 12.0.0'}
 
-  limbo-wasm@0.0.13:
-    resolution: {integrity: sha512-IUE0AF9hkClWC619yAgumCDjcvrDebYSGBHr4dfvjcMZ4A/blzbcBTnBrkXpHnovrwstcJWggXS7nH4MHxurnw==}
-
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
@@ -6623,6 +6625,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@libsql/client-wasm@0.14.0':
+    dependencies:
+      '@libsql/core': 0.14.0
+      js-base64: 3.7.7
+
   '@libsql/client@0.14.0':
     dependencies:
       '@libsql/core': 0.14.0
@@ -6638,7 +6645,6 @@ snapshots:
   '@libsql/core@0.14.0':
     dependencies:
       js-base64: 3.7.7
-    optional: true
 
   '@libsql/darwin-arm64@0.4.7':
     optional: true
@@ -9024,9 +9030,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0):
+  drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0):
     optionalDependencies:
       '@libsql/client': 0.14.0
+      '@libsql/client-wasm': 0.14.0
       '@types/react': 19.0.7
       better-sqlite3: 11.8.1
       react: 19.0.0
@@ -10098,8 +10105,7 @@ snapshots:
   jiti@2.4.2:
     optional: true
 
-  js-base64@3.7.7:
-    optional: true
+  js-base64@3.7.7: {}
 
   js-tokens@4.0.0: {}
 
@@ -10207,8 +10213,6 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.29.1
       lightningcss-win32-x64-msvc: 1.29.1
     optional: true
-
-  limbo-wasm@0.0.13: {}
 
   lines-and-columns@1.2.4: {}
 
