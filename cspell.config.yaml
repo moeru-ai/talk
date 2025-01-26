@@ -1,4 +1,4 @@
-version: '0.2'
+version: "0.2"
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
@@ -10,6 +10,7 @@ words:
   - importantimport
   - kwaa
   - kwaroran
+  - libsql
   - masknet
   - moeru
   - moetalk
