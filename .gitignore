@@ -24,4 +24,3 @@ dist-ssr
 
 # drizzle
 .moetalk.db
-src/db/generated
