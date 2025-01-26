@@ -27,23 +27,25 @@ export const Messages = () => {
         ref={ref}
         scrollRef={scrollRef}
       >
-        {messages.map((message, i) => {
-          const cardStyle = message.role === 'user' ? { alignSelf: 'flex-end', marginLeft: 'auto' } : { alignSelf: 'flex-start', marginRight: 'auto' }
+        {messages
+          .filter(message => ['assistant', 'user'].includes(message.role))
+          .map((message, i) => {
+            const cardStyle = message.role === 'user' ? { alignSelf: 'flex-end', marginLeft: 'auto' } : { alignSelf: 'flex-start', marginRight: 'auto' }
 
-          return (
-            <Flex
+            return (
+              <Flex
               // align="end" // for avatar
-              gap="2"
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              mt="2"
-            >
-              <Card style={cardStyle}>
-                <Content content={message.content as string} />
-              </Card>
-            </Flex>
-          )
-        })}
+                gap="2"
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
+                mt="2"
+              >
+                <Card style={cardStyle}>
+                  <Content content={message.content as string} />
+                </Card>
+              </Flex>
+            )
+          })}
       </Virtualizer>
     </ScrollArea>
   )
