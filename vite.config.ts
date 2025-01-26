@@ -9,7 +9,7 @@ export default defineConfig({
     esbuildOptions: {
       target: 'esnext',
     },
-    exclude: ['@libsql/client-wasm'],
+    exclude: ['sqlocal'],
   },
   plugins: [
     react({
