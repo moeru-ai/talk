@@ -9,7 +9,7 @@ import { useSetMessages } from '../../../context/messages'
 import { db } from '../../../db'
 import { charactersTable } from '../../../db/schema'
 import { useParams } from '../../../router'
-import { defaultSystemPrompt } from '../../../utils/ccv3/template'
+import { loadCharacterCard } from '../../../utils/ccv3/load'
 
 const Room = () => {
   const { uuid } = useParams('/room/:uuid')
@@ -33,7 +33,7 @@ const Room = () => {
 
   useEffect(() => {
     if (character)
-      setMessages([defaultSystemPrompt(character.data, 'User')])
+      setMessages(loadCharacterCard(character.data))
   }, [character, setMessages])
 
   return (

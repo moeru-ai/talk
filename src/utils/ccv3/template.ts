@@ -5,6 +5,7 @@ import type { Data } from './types'
 /**
  * @see {@link https://github.com/kwaroran/RisuAI/blob/d18b79a17e93afa586abf163a133c577df8b5409/src/ts/process/templates/templates.ts#L724}
  * TODO:
+ * - userDescription
  * - fill [Supplementary Information]
  * - support character book (lore book)
  */
