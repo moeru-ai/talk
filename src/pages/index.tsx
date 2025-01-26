@@ -1,13 +1,13 @@
 import { Container, Flex } from '@radix-ui/themes'
 
-import { Header } from './components/header'
-import { InputArea } from './components/input-area'
-import { Messages } from './components/messages'
-import { Sidebar } from './components/sidebar'
-import { Theme } from './components/theme'
-import { MessagesProvider } from './context/messages'
+import { Header } from '../components/header'
+import { InputArea } from '../components/input-area'
+import { Messages } from '../components/messages'
+import { Sidebar } from '../components/sidebar'
+import { Theme } from '../components/theme'
+import { MessagesProvider } from '../context/messages'
 
-export const App = () => (
+const Index = () => (
   <MessagesProvider>
     <Theme>
       <Sidebar />
@@ -21,3 +21,5 @@ export const App = () => (
     </Theme>
   </MessagesProvider>
 )
+
+export default Index

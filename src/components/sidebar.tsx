@@ -5,6 +5,7 @@ import { v7 } from 'uuid'
 
 import { db } from '../db'
 import { charactersTable } from '../db/schema'
+import { Link } from '../router'
 import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { SidebarNewCharacter } from './sidebar-new-character'
 
@@ -69,9 +70,13 @@ export const Sidebar = () => {
               </IconButton>
             </Tooltip>
             {characters.map(character => (
-              <IconButton asChild key={character.id}>
-                <Avatar color="gray" fallback={character.name.slice(0, 2)} size="4" />
-              </IconButton>
+              <Tooltip content={character.name} key={character.id} side="right">
+                <Link params={{ uuid: character.id }} to="/room/:uuid" viewTransition>
+                  <IconButton asChild>
+                    <Avatar color="gray" fallback={character.name.slice(0, 2)} size="4" />
+                  </IconButton>
+                </Link>
+              </Tooltip>
             ))}
             <SidebarNewCharacter handleSelect={handleSelect} />
           </Flex>
