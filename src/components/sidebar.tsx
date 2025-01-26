@@ -6,6 +6,7 @@ import { v7 } from 'uuid'
 import { db } from '../db'
 import { charactersTable } from '../db/schema'
 import { Link } from '../router'
+import { processAvatarPNG } from '../utils/ccv3/avatar'
 import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { SidebarNewCharacter } from './sidebar-new-character'
 
@@ -24,13 +25,11 @@ export const Sidebar = () => {
     const png = new Uint8Array(buffer)
     const json = parseCharacterCardPNG(png)
 
-    // TODO: remove this
     if (json !== undefined) {
       await db
         .insert(charactersTable)
         .values({
-          // TODO: set avatar
-          avatar: undefined,
+          avatar: await processAvatarPNG(png),
           data: json.data,
           id: v7(),
           name: json.data.name,
@@ -75,7 +74,7 @@ export const Sidebar = () => {
               <Tooltip content={character.name} key={character.id} side="right">
                 <Link params={{ uuid: character.id }} to="/room/:uuid" viewTransition>
                   <IconButton asChild>
-                    <Avatar color="gray" fallback={character.name.slice(0, 2)} size="4" />
+                    <Avatar color="gray" fallback={character.name.slice(0, 2)} size="4" src={character.avatar ?? undefined} />
                   </IconButton>
                 </Link>
               </Tooltip>
