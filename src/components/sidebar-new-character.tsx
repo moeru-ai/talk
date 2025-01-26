@@ -29,7 +29,6 @@ export const SidebarNewCharacter = ({ handleSelect }: { handleSelect: (e: FileLi
           <DropZone>
             <FileTrigger
               acceptedFileTypes={['application/json', 'image/png']}
-
               // eslint-disable-next-line @masknet/no-then, ts/no-misused-promises
               onSelect={async e => handleSelect(e).then(() => setOpen(false))}
             >
