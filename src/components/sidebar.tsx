@@ -65,9 +65,11 @@ export const Sidebar = () => {
         <ScrollArea>
           <Flex direction="column" gap="3" p="3">
             <Tooltip content="Welcome" side="right">
-              <IconButton size="4" variant="soft">
-                <Icon icon="heroicons:information-circle" width="20" />
-              </IconButton>
+              <Link to="/" viewTransition>
+                <IconButton size="4" variant="soft">
+                  <Icon icon="heroicons:information-circle" width="20" />
+                </IconButton>
+              </Link>
             </Tooltip>
             {characters.map(character => (
               <Tooltip content={character.name} key={character.id} side="right">
