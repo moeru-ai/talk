@@ -13,7 +13,7 @@ import { loadCharacterCard } from '../../../utils/ccv3/load'
 
 const Room = () => {
   const { uuid } = useParams('/room/:uuid')
-  const [character, setCharacter] = useState<null | typeof charactersTable.$inferSelect>(null)
+  const [character, setCharacter] = useState<typeof charactersTable.$inferSelect | undefined>()
   const setMessages = useSetMessages()
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Room = () => {
     <Flex direction="column" gap="2" height="100vh" p="2" width="100%">
       <Header />
       <Messages />
-      <InputArea />
+      <InputArea character={character} />
     </Flex>
   )
 }

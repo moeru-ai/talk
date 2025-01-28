@@ -7,6 +7,8 @@ import { ollama } from '@xsai/providers'
 import { useState } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
+import type { charactersTable } from '../db/schema'
+
 import { useMessages, useSetMessages } from '../context/messages'
 import { useChatModel } from '../hooks/use-model'
 
@@ -14,7 +16,7 @@ export interface Inputs {
   content: string
 }
 
-export const InputArea = () => {
+export const InputArea = ({ character }: { character: typeof charactersTable.$inferSelect | undefined }) => {
   const [chatModel] = useChatModel()
   const messages = useMessages()
   const setMessages = useSetMessages()
@@ -52,7 +54,11 @@ export const InputArea = () => {
         {isTyping && (
           <Flex align="center" gap="2">
             <Icon icon="svg-spinners:3-dots-scale" />
-            <Text>Bot is typing</Text>
+            <Text>
+              {character?.name ?? 'Bot'}
+              {' '}
+              is typing
+            </Text>
           </Flex>
         )}
         <TextArea
