@@ -16,7 +16,7 @@ export interface Inputs {
   content: string
 }
 
-export const InputArea = ({ character }: { character: typeof charactersTable.$inferSelect | undefined }) => {
+export const InputArea = ({ character }: { character?: typeof charactersTable.$inferSelect }) => {
   const [chatModel] = useChatModel()
   const messages = useMessages()
   const setMessages = useSetMessages()
