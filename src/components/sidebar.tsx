@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Avatar, Box, Flex, IconButton, ScrollArea, Tooltip } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
+import { useMatch } from 'react-router-dom'
 import { v7 } from 'uuid'
 
 import { db } from '../db'
@@ -13,6 +14,7 @@ import { SidebarNewCharacter } from './sidebar-new-character'
 export const Sidebar = () => {
   const [characters, setCharacters] = useState<typeof charactersTable.$inferSelect[]>([])
   const [updateCharacters, setUpdateCharacters] = useState(0)
+  const match = useMatch('/room/:uuid')
 
   const handleSelect = async (e: FileList | null) => {
     if (!e)
@@ -51,6 +53,16 @@ export const Sidebar = () => {
     // return () => setUpdateCharacters(false)
   }, [updateCharacters])
 
+  const isActive = (uuid: string) =>
+    match?.params.uuid === uuid
+      ? {
+          outlineColor: 'var(--accent-7)',
+          outlineOffset: 2,
+          outlineStyle: 'solid',
+          outlineWidth: 2,
+        }
+      : {}
+
   return (
     <Box display={{ initial: 'none', md: 'block' }}>
       <Box
@@ -73,8 +85,8 @@ export const Sidebar = () => {
             {characters.map(character => (
               <Tooltip content={character.name} key={character.id} side="right">
                 <Link params={{ uuid: character.id }} to="/room/:uuid" viewTransition>
-                  <IconButton asChild>
-                    <Avatar color="gray" fallback={character.name.slice(0, 2)} size="4" src={character.avatar ?? undefined} />
+                  <IconButton asChild style={isActive(character.id)}>
+                    <Avatar fallback={character.name.slice(0, 2)} size="4" src={character.avatar ?? undefined} />
                   </IconButton>
                 </Link>
               </Tooltip>
