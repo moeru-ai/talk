@@ -21,8 +21,10 @@ export const Header = () => {
       </Badge>
       <Flex align="center" gap="4" style={{ alignSelf: 'flex-end', marginBottom: 'auto', marginLeft: 'auto', marginTop: 'auto' }}>
         <Tooltip content="GitHub">
-          <IconButton color="gray" data-test-id="github" onClick={() => window.open('https://github.com/moeru-ai/talk', 'WindowName', 'noopener')} variant="ghost">
-            <Icon icon="simple-icons:github" />
+          <IconButton asChild color="gray" variant="ghost">
+            <a data-test-id="github" href="https://github.com/moeru-ai/talk" target="_blank">
+              <Icon icon="simple-icons:github" />
+            </a>
           </IconButton>
         </Tooltip>
         <Settings />
