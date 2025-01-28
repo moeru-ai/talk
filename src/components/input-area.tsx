@@ -2,7 +2,7 @@ import type { Message } from '@xsai/shared-chat'
 
 import { Icon } from '@iconify/react'
 import { Button, Flex, IconButton, Text, TextArea } from '@radix-ui/themes'
-import generateText from '@xsai/generate-text'
+import { generateText } from '@xsai/generate-text'
 import { ollama } from '@xsai/providers'
 import { useState } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
