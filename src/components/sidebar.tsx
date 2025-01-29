@@ -1,50 +1,16 @@
 import { Icon } from '@iconify/react'
 import { Avatar, Box, Flex, IconButton, ScrollArea, Tooltip } from '@radix-ui/themes'
 import { useMatch } from 'react-router-dom'
-import { toast } from 'sonner'
-import { v7 } from 'uuid'
 
-import { useCharacters, useUpdateCharacters } from '../context/characters'
+import { useCharacters } from '../context/characters'
 import { useSidebarActive } from '../context/sidebar-active'
-import { db } from '../db'
-import { charactersTable } from '../db/schema'
 import { Link } from '../router'
-import { processAvatarPNG } from '../utils/ccv3/avatar'
-import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { SidebarNewCharacter } from './sidebar-new-character'
 
 export const Sidebar = () => {
   const characters = useCharacters()
-  const updateCharacters = useUpdateCharacters()
   const match = useMatch('/room/:uuid')
   const active = useSidebarActive()
-
-  const handleSelect = async (e: FileList | null) => {
-    if (!e)
-      return
-
-    const file = e[0]
-    // TODO: is-png
-    const buffer = await file.arrayBuffer()
-    // eslint-disable-next-line @masknet/array-prefer-from
-    const png = new Uint8Array(buffer)
-    const json = parseCharacterCardPNG(png)
-
-    if (json !== undefined) {
-      await db
-        .insert(charactersTable)
-        .values({
-          avatar: await processAvatarPNG(png),
-          data: json.data,
-          id: v7(),
-          name: json.data.name,
-        })
-
-      toast.success(`${json.data.name} has been created`)
-
-      void updateCharacters()
-    }
-  }
 
   const isActive = (uuid: string) =>
     match?.params.uuid === uuid
@@ -80,7 +46,7 @@ export const Sidebar = () => {
               </Link>
             </Tooltip>
           ))}
-          <SidebarNewCharacter handleSelect={handleSelect} />
+          <SidebarNewCharacter />
         </Flex>
       </ScrollArea>
     </Box>

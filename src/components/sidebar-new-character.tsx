@@ -2,12 +2,47 @@ import { Icon } from '@iconify/react'
 import { Button, Dialog, Flex, IconButton, Separator, TextField, Tooltip } from '@radix-ui/themes'
 import { useState } from 'react'
 import { FileTrigger } from 'react-aria-components'
+import { toast } from 'sonner'
+import { v7 } from 'uuid'
 
+import { useUpdateCharacters } from '../context/characters'
+import { db } from '../db'
+import { charactersTable } from '../db/schema'
+import { processAvatarPNG } from '../utils/ccv3/avatar'
+import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { Button as AriaButton } from './aria/button'
 import { DropZone } from './aria/drop-zone'
 
-export const SidebarNewCharacter = ({ handleSelect }: { handleSelect: (e: FileList | null) => Promise<void> }) => {
+export const SidebarNewCharacter = () => {
   const [open, setOpen] = useState(false)
+  const updateCharacters = useUpdateCharacters()
+
+  const handleSelect = async (e: FileList | null) => {
+    if (!e)
+      return
+
+    const file = e[0]
+    // TODO: is-png
+    const buffer = await file.arrayBuffer()
+    // eslint-disable-next-line @masknet/array-prefer-from
+    const png = new Uint8Array(buffer)
+    const json = parseCharacterCardPNG(png)
+
+    if (json !== undefined) {
+      await db
+        .insert(charactersTable)
+        .values({
+          avatar: await processAvatarPNG(png),
+          data: json.data,
+          id: v7(),
+          name: json.data.name,
+        })
+
+      toast.success(`${json.data.name} has been created`)
+
+      void updateCharacters()
+    }
+  }
 
   return (
     <Dialog.Root onOpenChange={setOpen} open={open}>
