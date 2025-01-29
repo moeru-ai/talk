@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
-import { Select, Separator, Text, TextField } from '@radix-ui/themes'
+import { Badge, Select, Separator, Text, TextField } from '@radix-ui/themes'
+import { useOnline } from '@uiw/react-use-online'
 
 import { useChatModel, useEmbedModel } from '../../hooks/use-model'
 import { useListModels } from '../../hooks/xsai/use-list-models'
@@ -8,6 +9,10 @@ import * as Sheet from '../ui/sheet'
 export const SettingsChat = () => {
   const [chatModel, setChatModel] = useChatModel()
   const [embedModel, setEmbedModel] = useEmbedModel()
+  const isOnline = useOnline()
+
+  const badgeColor = isOnline ? 'green' : 'red'
+  const badgeText = isOnline ? 'Online' : 'Offline'
 
   const baseURL = 'http://localhost:11434/v1/'
 
@@ -15,7 +20,9 @@ export const SettingsChat = () => {
 
   return (
     <>
-      <Sheet.Title>Chat</Sheet.Title>
+      <Sheet.Title>
+        Chat
+      </Sheet.Title>
       <Sheet.Description mb="4" size="2">
         Connect to your LLM API.
       </Sheet.Description>
@@ -23,6 +30,9 @@ export const SettingsChat = () => {
       <label>
         <Text as="div" mb="1" weight="bold">
           Provider
+          <Badge color={badgeColor} ml="2">
+            {badgeText}
+          </Badge>
         </Text>
         <Select.Root defaultValue="ollama">
           <Select.Trigger style={{ width: '100%' }} />
