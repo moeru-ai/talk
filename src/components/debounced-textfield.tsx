@@ -1,27 +1,42 @@
-import type { ComponentProps } from 'react'
+import type { ChangeEventHandler, FC, FocusEventHandler, ReactNode } from 'react'
 
 import { TextField } from '@radix-ui/themes'
 import { useCallback, useState } from 'react'
 
-export type DebouncedTextFieldProps = ComponentProps<typeof TextField.Root> & { onValueChange?: (s: string) => void }
-export const DebouncedTextField = ({ onBlur, onChange, onValueChange, ref, ...props }: DebouncedTextFieldProps) => {
-  const [indeterminate, setIndeterminate] = useState<string | undefined>(undefined)
-  const [prevValue, setPrevValue] = useState(props.value)
-  if (prevValue !== props.value) {
-    setPrevValue(props.value)
-    setIndeterminate(undefined)
-  }
-  const _onBlur = useCallback<Exclude<TextField.RootProps['onBlur'], undefined>>((e) => {
-    onBlur?.(e)
-    if (indeterminate !== undefined) {
-      onValueChange?.(indeterminate)
+function withOnBlurValue<P extends WithOnBlurValueRequiredProps>(Component: FC<P>): FC<P & WithOnBlurValueProps>{
+  return (props) => {
+    const { onBlur, onBlurValueChange, onChange, value, ...rest } = props
+    const [indeterminate, setIndeterminate] = useState<typeof value>(undefined)
+    const [prevValue, setPrevValue] = useState(props.value)
+    if (prevValue !== props.value) {
+      setPrevValue(props.value)
       setIndeterminate(undefined)
     }
-  }, [onValueChange, onBlur, indeterminate])
-  const _onChange = useCallback<Exclude<TextField.RootProps['onChange'], undefined>>((e) => {
-    onChange?.(e)
-    setIndeterminate(e.currentTarget.value)
-  }, [setIndeterminate, onChange])
-  // eslint-disable-next-line @masknet/jsx-prefer-test-id
-  return <TextField.Root ref={ref} {...props} onBlur={_onBlur} onChange={_onChange} value={indeterminate ?? props.value} />
+    const _onBlur = useCallback<Exclude<typeof onBlur, undefined>>((e) => {
+      onBlur?.(e)
+      if (indeterminate !== undefined) {
+        onBlurValueChange?.(indeterminate.toString())
+        setIndeterminate(undefined)
+      }
+    }, [onBlur, onBlurValueChange, indeterminate, setIndeterminate])
+    const _onChange = useCallback<Exclude<typeof onChange, undefined>>((e) => {
+      onChange?.(e)
+      setIndeterminate(e.currentTarget.value)
+    }, [onChange, setIndeterminate])
+    const p = { onBlur: _onBlur, onChange: _onChange, value: indeterminate ?? value, ...rest }
+    return <Component {...p as P} />
+  }
 }
+
+interface WithOnBlurValueProps {
+  onBlurValueChange?: (text: string) => undefined | void
+}
+
+interface WithOnBlurValueRequiredProps {
+  children?: ReactNode
+  onBlur?: FocusEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  value?: string | number
+}
+
+export const DebouncedTextField = withOnBlurValue(TextField.Root)
