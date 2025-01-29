@@ -1,9 +1,9 @@
 import { Icon } from '@iconify/react'
 import { Avatar, Box, Flex, IconButton, ScrollArea, Tooltip } from '@radix-ui/themes'
-import { useEffect, useState } from 'react'
 import { useMatch } from 'react-router-dom'
 import { v7 } from 'uuid'
 
+import { useCharacters, useUpdateCharacters } from '../context/characters'
 import { useSidebarActive } from '../context/sidebar-active'
 import { db } from '../db'
 import { charactersTable } from '../db/schema'
@@ -13,8 +13,8 @@ import { parseCharacterCardPNG } from '../utils/ccv3/parse'
 import { SidebarNewCharacter } from './sidebar-new-character'
 
 export const Sidebar = () => {
-  const [characters, setCharacters] = useState<typeof charactersTable.$inferSelect[]>([])
-  const [updateCharacters, setUpdateCharacters] = useState(0)
+  const characters = useCharacters()
+  const updateCharacters = useUpdateCharacters()
   const match = useMatch('/room/:uuid')
   const active = useSidebarActive()
 
@@ -39,21 +39,9 @@ export const Sidebar = () => {
           name: json.data.name,
         })
 
-      setUpdateCharacters(updateCharacters + 1)
+      void updateCharacters()
     }
   }
-
-  useEffect(() => {
-    const getCharacters = async () => {
-      const characters = await db.select().from(charactersTable)
-
-      setCharacters(characters)
-    }
-
-    void getCharacters()
-
-    // return () => setUpdateCharacters(false)
-  }, [updateCharacters])
 
   const isActive = (uuid: string) =>
     match?.params.uuid === uuid
