@@ -5,6 +5,7 @@ import { useOnline } from '@uiw/react-use-online'
 import { useChatModel, useEmbedModel } from '../../hooks/use-model'
 import { useListModels } from '../../hooks/xsai/use-list-models'
 import * as Sheet from '../ui/sheet'
+import {DebouncedTextField} from "../debounced-textfield.tsx";
 
 export const SettingsChat = () => {
   const [chatModel, setChatModel] = useChatModel()
@@ -59,18 +60,18 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Base URL
         </Text>
-        <TextField.Root disabled placeholder="https://openai.com/v1/">
+        <DebouncedTextField disabled placeholder="https://openai.com/v1/">
           <TextField.Slot />
-        </TextField.Root>
+        </DebouncedTextField>
       </label>
 
       <label>
         <Text as="div" mb="1" weight="bold">
           API Key
         </Text>
-        <TextField.Root disabled placeholder="sk-abcdefghijklmnop123">
+        <DebouncedTextField disabled placeholder="sk-abcdefghijklmnop123">
           <TextField.Slot />
-        </TextField.Root>
+        </DebouncedTextField>
       </label>
 
       <Separator size="3" />
