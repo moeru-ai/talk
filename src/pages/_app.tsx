@@ -1,19 +1,23 @@
-import { Container } from '@radix-ui/themes'
+import { Box, Flex } from '@radix-ui/themes'
 import { Outlet } from 'react-router-dom'
 
 import { Sidebar } from '../components/sidebar'
 import { Theme } from '../components/theme'
-import { MessagesProvider } from '../context/messages'
+import { Context } from '../context'
 
 const App = () => (
-  <MessagesProvider>
+  <Context>
     <Theme>
-      <Sidebar />
-      <Container height="100vh" size="3">
-        <Outlet />
-      </Container>
+      <Flex gap="2">
+        <Sidebar />
+        <Box height="100vh" width="100%">
+          <Box maxWidth="var(--container-3)" mx="auto">
+            <Outlet />
+          </Box>
+        </Box>
+      </Flex>
     </Theme>
-  </MessagesProvider>
+  </Context>
 )
 
 export default App
