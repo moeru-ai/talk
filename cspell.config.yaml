@@ -1,4 +1,4 @@
-version: "0.2"
+version: '0.2'
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
@@ -18,8 +18,9 @@ words:
   - ollama
   - risu
   - roleplay
-  - Seraphina
+  - seraphina
   - sonarjs
+  - sonner
   - sqlocal
   - virtua
   - xsai

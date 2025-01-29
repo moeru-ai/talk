@@ -3,11 +3,13 @@ import { Outlet } from 'react-router-dom'
 
 import { Sidebar } from '../components/sidebar'
 import { Theme } from '../components/theme'
+import { Toaster } from '../components/ui/sonner'
 import { Context } from '../context'
 
 const App = () => (
   <Context>
     <Theme>
+      <Toaster />
       <Flex gap="2">
         <Sidebar />
         <Box height="100vh" width="100%">

@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Avatar, Box, Flex, IconButton, ScrollArea, Tooltip } from '@radix-ui/themes'
 import { useMatch } from 'react-router-dom'
+import { toast } from 'sonner'
 import { v7 } from 'uuid'
 
 import { useCharacters, useUpdateCharacters } from '../context/characters'
@@ -38,6 +39,8 @@ export const Sidebar = () => {
           id: v7(),
           name: json.data.name,
         })
+
+      toast.success(`${json.data.name} has been created`)
 
       void updateCharacters()
     }
