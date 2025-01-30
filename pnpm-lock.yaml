@@ -77,6 +77,9 @@ importers:
       sqlocal:
         specifier: ^0.13.0
         version: 0.13.0(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0))
+      swr:
+        specifier: ^2.3.0
+        version: 2.3.0(react@19.0.0)
       uuid:
         specifier: ^11.0.5
         version: 11.0.5
@@ -5037,6 +5040,11 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  swr@2.3.0:
+    resolution: {integrity: sha512-NyZ76wA4yElZWBHzSgEJc28a0u6QZvhb6w0azeL2k7+Q1gAzVK+IqQYXhVOC/mzi+HZIozrZvBVeSeOZNR2bqA==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   synckit@0.6.2:
     resolution: {integrity: sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==}
@@ -11534,6 +11542,12 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  swr@2.3.0(react@19.0.0):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.0.0
+      use-sync-external-store: 1.4.0(react@19.0.0)
 
   synckit@0.6.2:
     dependencies:
