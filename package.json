@@ -9,6 +9,7 @@
     "db:generate": "drizzle-kit generate --name init --prefix index",
     "dev": "vite",
     "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix --cache .",
     "preview": "vite preview"
   },
   "dependencies": {
