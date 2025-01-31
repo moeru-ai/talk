@@ -17,6 +17,10 @@ jobs:
           cache: pnpm
           node-version: latest
           registry-url: https://registry.npmjs.org
+      - run: |
+          git rev-parse HEAD || true
+          git status || true
+          cat /home/runner/work/talk/talk/src/router.ts
       - run: pnpm install
       - run: pnpm build
       - run: pnpm eslint .
