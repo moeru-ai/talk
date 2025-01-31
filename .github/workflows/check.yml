@@ -23,4 +23,9 @@ jobs:
           cat /home/runner/work/talk/talk/src/router.ts
       - run: pnpm install
       - run: pnpm build
+      - run: |
+          git rev-parse HEAD || true
+          git status || true
+          cat /home/runner/work/talk/talk/src/router.ts
+
       - run: pnpm eslint .
