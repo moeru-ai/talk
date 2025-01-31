@@ -6,6 +6,8 @@ import reactCompiler from 'eslint-plugin-react-compiler'
 export default antfu({
   react: true,
   typescript: { tsconfigPath: './tsconfig.json' },
+}, {
+  ignores: ['src/router.ts'],
 })
   .append(ii())
   .append({
