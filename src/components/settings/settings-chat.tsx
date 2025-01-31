@@ -4,8 +4,8 @@ import { useOnline } from '@uiw/react-use-online'
 
 import { useChatModel, useEmbedModel } from '../../hooks/use-model'
 import { useListModels } from '../../hooks/xsai/use-list-models'
+import { DebouncedTextField } from '../debounced-textfield.tsx'
 import * as Sheet from '../ui/sheet'
-import {DebouncedTextField} from "../debounced-textfield.tsx";
 
 export const SettingsChat = () => {
   const [chatModel, setChatModel] = useChatModel()
