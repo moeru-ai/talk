@@ -10,14 +10,14 @@ import { type SubmitHandler, useForm } from 'react-hook-form'
 import type { charactersTable } from '../db/schema'
 
 import { useMessages, useSetMessages } from '../context/messages'
-import { useChatModel } from '../hooks/use-model'
+import { useChatProvider } from '../hooks/use-model'
 
 export interface Inputs {
   content: string
 }
 
 export const InputArea = ({ character }: { character?: typeof charactersTable.$inferSelect }) => {
-  const [chatModel] = useChatModel()
+  const chatProvider = useChatProvider()
   const messages = useMessages()
   const setMessages = useSetMessages()
 
@@ -39,7 +39,7 @@ export const InputArea = ({ character }: { character?: typeof charactersTable.$i
     setIsTyping(true)
 
     const { text } = await generateText({
-      ...ollama.chat(chatModel as string),
+      ...ollama.chat(chatProvider.chatModel ?? ''),
       messages: msg,
     })
 

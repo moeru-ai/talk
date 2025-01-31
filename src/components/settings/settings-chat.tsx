@@ -2,22 +2,20 @@ import { Icon } from '@iconify/react'
 import { Badge, Select, Separator, Text, TextField } from '@radix-ui/themes'
 import { useOnline } from '@uiw/react-use-online'
 
-import { useChatModel, useEmbedModel } from '../../hooks/use-model'
+import { useChatProvider } from '../../hooks/use-model'
 import { useListModels } from '../../hooks/xsai/use-list-models'
 import { DebouncedTextField } from '../debounced-textfield.tsx'
 import * as Sheet from '../ui/sheet'
 
 export const SettingsChat = () => {
-  const [chatModel, setChatModel] = useChatModel()
-  const [embedModel, setEmbedModel] = useEmbedModel()
+  const chatProvider = useChatProvider()
+
   const isOnline = useOnline()
 
   const badgeColor = isOnline ? 'green' : 'red'
   const badgeText = isOnline ? 'Online' : 'Offline'
 
-  const baseURL = 'http://localhost:11434/v1/'
-
-  const { models } = useListModels({ baseURL })
+  const { models } = useListModels({ baseURL: chatProvider.baseURL })
 
   return (
     <>
@@ -35,18 +33,21 @@ export const SettingsChat = () => {
             {badgeText}
           </Badge>
         </Text>
-        <Select.Root defaultValue="ollama">
+        <Select.Root
+          onValueChange={p => chatProvider.update({ provider: p as typeof chatProvider.provider })}
+          value={chatProvider.provider}
+        >
           <Select.Trigger style={{ width: '100%' }} />
           <Select.Content position="popper">
             <Select.Item value="ollama">
               <Icon icon="simple-icons:ollama" inline style={{ marginInlineEnd: '0.5rem' }} />
               Ollama (localhost)
             </Select.Item>
-            <Select.Item disabled value="openai">
+            <Select.Item value="openai">
               <Icon icon="simple-icons:openai" inline style={{ marginInlineEnd: '0.5rem' }} />
               OpenAI
             </Select.Item>
-            <Select.Item disabled value="openai-compatible">
+            <Select.Item value="openai-compatible">
               <Icon icon="simple-icons:openai" inline style={{ marginInlineEnd: '0.5rem' }} />
               OpenAI-compatible
             </Select.Item>
@@ -60,7 +61,11 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Base URL
         </Text>
-        <DebouncedTextField disabled placeholder="https://openai.com/v1/">
+        <DebouncedTextField
+          disabled={!chatProvider.isEditable('baseURL')}
+          onBlurValueChange={baseURL => chatProvider.update({ baseURL })}
+          value={chatProvider.baseURL}
+        >
           <TextField.Slot />
         </DebouncedTextField>
       </label>
@@ -69,7 +74,11 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           API Key
         </Text>
-        <DebouncedTextField disabled placeholder="sk-abcdefghijklmnop123">
+        <DebouncedTextField
+          disabled={!chatProvider.isEditable('apiKey')}
+          onBlurValueChange={apiKey => chatProvider.update({ apiKey })}
+          value={chatProvider.apiKey}
+        >
           <TextField.Slot />
         </DebouncedTextField>
       </label>
@@ -80,12 +89,10 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Chat Model
         </Text>
-        <Select.Root defaultValue={chatModel ?? undefined} onValueChange={setChatModel}>
+        <Select.Root onValueChange={chatModel => chatProvider.update({ chatModel })} value={chatProvider.chatModel ?? undefined}>
           <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
           <Select.Content position="popper">
-            {models.map(model => (
-              <Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>
-            ))}
+            {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
           </Select.Content>
         </Select.Root>
       </label>
@@ -94,12 +101,10 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Embed Model
         </Text>
-        <Select.Root defaultValue={embedModel ?? undefined} onValueChange={setEmbedModel}>
+        <Select.Root onValueChange={embedModel => chatProvider.update({ embedModel })} value={chatProvider.embedModel ?? undefined}>
           <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
           <Select.Content position="popper">
-            {models.map(model => (
-              <Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>
-            ))}
+            {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
           </Select.Content>
         </Select.Root>
       </label>
