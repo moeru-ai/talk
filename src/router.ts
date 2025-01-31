@@ -1,17 +1,17 @@
 // Generouted, changes to this file will be overridden
-/* eslint-disable */
 
 import { components, hooks, utils } from '@generouted/react-router/client'
 
-export type Path =
-  | `/`
-  | `/room/:uuid`
+// eslint-disable-next-line sonarjs/redundant-type-aliases
+export type ModalPath = never
 
-export type Params = {
+export interface Params {
   '/room/:uuid': { uuid: string }
 }
 
-export type ModalPath = never
+export type Path =
+  | '/'
+  | '/room/:uuid'
 
 export const { Link, Navigate } = components<Path, Params>()
 export const { useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()
