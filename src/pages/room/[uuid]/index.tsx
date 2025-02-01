@@ -16,7 +16,8 @@ const Room = () => {
 
   useEffect(() => {
     if (character)
-      setMessages(loadCharacterCard(character.data))
+      // TODO: userName
+      setMessages(loadCharacterCard(character.data, 'User'))
   }, [character, setMessages])
 
   return (
