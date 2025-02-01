@@ -17,7 +17,7 @@ export const SettingsChat = () => {
   const badgeColor = isOnline ? 'green' : 'red'
   const badgeText = isOnline ? 'Online' : 'Offline'
 
-  const { models } = useListModels(chatProvider)
+  const { models } = useListModels(chatProvider, [chatProvider])
 
   return (
     <>

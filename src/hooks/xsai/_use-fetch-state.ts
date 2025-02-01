@@ -1,8 +1,10 @@
+import type { DependencyList } from 'react'
+
 import { useAbortableEffect } from 'foxact/use-abortable-effect'
 import { useState } from 'react'
 
 /** @internal */
-export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, initialState: T) => {
+export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, initialState: T, deps: DependencyList) => {
   const [data, setData] = useState<T>(initialState)
   const [error, setError] = useState<Error | undefined>()
   const [isLoading, setIsLoading] = useState(true)
@@ -22,7 +24,7 @@ export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, i
         if (!signal.aborted)
           setIsLoading(false)
       })
-  }, [getData])
+  }, [getData, ...deps])
 
   return { data, error, isLoading }
 }
