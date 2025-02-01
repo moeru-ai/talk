@@ -51,7 +51,7 @@ export const InputArea = ({ character }: { character?: typeof charactersTable.$i
     setIsTyping(false)
   }
 
-  const onKeyDownTextArea = useCallback<KeyboardEventHandler<HTMLTextAreaElement>>((e) => {
+  const handleKeyDown = useCallback<KeyboardEventHandler<HTMLTextAreaElement>>((e) => {
     if (e.key !== 'Enter' || e.altKey || e.metaKey || e.shiftKey || e.ctrlKey)
       return
     e.preventDefault()
