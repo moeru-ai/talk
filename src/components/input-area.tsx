@@ -3,21 +3,21 @@ import type { Message } from '@xsai/shared-chat'
 import { Icon } from '@iconify/react'
 import { Button, Flex, IconButton, Text, TextArea } from '@radix-ui/themes'
 import { generateText } from '@xsai/generate-text'
-import { ollama } from '@xsai/providers'
 import { useState } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 import type { charactersTable } from '../db/schema'
 
 import { useMessages, useSetMessages } from '../context/messages'
-import { useChatProvider } from '../hooks/use-model'
+import { useChatModel, useChatProvider } from '../hooks/use-chat-provider'
 
 export interface Inputs {
   content: string
 }
 
 export const InputArea = ({ character }: { character?: typeof charactersTable.$inferSelect }) => {
-  const chatProvider = useChatProvider()
+  const [chatProvider] = useChatProvider()
+  const [chatModel] = useChatModel()
   const messages = useMessages()
   const setMessages = useSetMessages()
 
@@ -39,8 +39,9 @@ export const InputArea = ({ character }: { character?: typeof charactersTable.$i
     setIsTyping(true)
 
     const { text } = await generateText({
-      ...ollama.chat(chatProvider.chatModel ?? ''),
+      ...chatProvider,
       messages: msg,
+      model: chatModel,
     })
 
     setMessages([...msg, { content: text, role: 'assistant' }])

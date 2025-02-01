@@ -1,13 +1,16 @@
+import type { DependencyList } from 'react'
+
 import { useAbortableEffect } from 'foxact/use-abortable-effect'
 import { useState } from 'react'
 
 /** @internal */
-export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, initialState: T) => {
+export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, initialState: T, deps: DependencyList) => {
   const [data, setData] = useState<T>(initialState)
   const [error, setError] = useState<Error | undefined>()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useAbortableEffect((signal) => {
+    setIsLoading(true)
     // eslint-disable-next-line @masknet/no-then
     getData(signal)
       .then((data) => {
@@ -15,14 +18,17 @@ export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, i
           setData(data)
       })
       .catch((error: Error) => {
-        if (!signal.aborted)
+        // eslint-disable-next-line @masknet/prefer-early-return
+        if (!signal.aborted) {
+          setData(initialState)
           setError(error)
+        }
       })
       .finally(() => {
         if (!signal.aborted)
           setIsLoading(false)
       })
-  }, [getData])
+  }, [getData, ...deps])
 
   return { data, error, isLoading }
 }
