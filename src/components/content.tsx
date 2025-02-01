@@ -3,7 +3,6 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 export const Content = ({ content }: { content: string }) => (
-  // <Flex asChild direction="column" gap="2">
   <Markdown
     components={{
       a: ({ children, href }) => <Link href={href}>{children}</Link>,
@@ -24,5 +23,4 @@ export const Content = ({ content }: { content: string }) => (
   >
     {content}
   </Markdown>
-  // </Flex>
 )
