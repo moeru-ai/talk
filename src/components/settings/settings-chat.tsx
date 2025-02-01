@@ -17,7 +17,7 @@ export const SettingsChat = () => {
   const badgeColor = isOnline ? 'green' : 'red'
   const badgeText = isOnline ? 'Online' : 'Offline'
 
-  const { error: modelsError, models } = useListModels(chatProvider, [chatProvider])
+  const { models } = useListModels(chatProvider, [chatProvider])
 
   return (
     <>
@@ -86,7 +86,7 @@ export const SettingsChat = () => {
           Chat Model
         </Text>
         {/* eslint-disable-next-line @masknet/jsx-no-logical */}
-        {modelsError
+        {models.length === 0
           ? (
               <DebouncedTextField onBlurValueChange={setChatModel} value={chatModel} />
             )
@@ -105,7 +105,7 @@ export const SettingsChat = () => {
           Embed Model
         </Text>
         {/* eslint-disable-next-line @masknet/jsx-no-logical */}
-        {modelsError
+        {models.length === 0
           ? (
               <DebouncedTextField onBlurValueChange={setEmbedModel} value={embedModel} />
             )

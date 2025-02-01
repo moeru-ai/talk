@@ -7,9 +7,10 @@ import { useState } from 'react'
 export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, initialState: T, deps: DependencyList) => {
   const [data, setData] = useState<T>(initialState)
   const [error, setError] = useState<Error | undefined>()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useAbortableEffect((signal) => {
+    setIsLoading(true)
     // eslint-disable-next-line @masknet/no-then
     getData(signal)
       .then((data) => {
@@ -17,8 +18,11 @@ export const useFetchState = <T>(getData: (signal: AbortSignal) => Promise<T>, i
           setData(data)
       })
       .catch((error: Error) => {
-        if (!signal.aborted)
+        // eslint-disable-next-line @masknet/prefer-early-return
+        if (!signal.aborted) {
+          setData(initialState)
           setError(error)
+        }
       })
       .finally(() => {
         if (!signal.aborted)
