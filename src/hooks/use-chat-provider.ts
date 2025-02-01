@@ -56,10 +56,12 @@ export const useChatProvider = () => {
   const [lastProvider, setLastProvider] = useState(provider.metadata.id)
   const [,setChatModel] = useChatModel()
   const [,setEmbedModel] = useEmbedModel()
+
   if (lastProvider !== provider.metadata.id) {
     setLastProvider(provider.metadata.id)
     setChatModel('')
     setEmbedModel('')
   }
+
   return [provider, setProvider] as const
 }
