@@ -1,7 +1,7 @@
 import { useLocalStorage } from 'foxact/use-local-storage'
 
 export interface ChatProvider {
-  apiKey?: string
+  apiKey: string
   baseURL: string
   metadata: {
     disableEditApiKey?: true
@@ -15,6 +15,7 @@ export interface ChatProvider {
 
 export const predefinedChatProviders: ChatProvider[] = [
   {
+    apiKey: '',
     baseURL: 'http://localhost:11434/v1/',
     metadata: {
       disableEditApiKey: true,
@@ -24,6 +25,7 @@ export const predefinedChatProviders: ChatProvider[] = [
     },
   },
   {
+    apiKey: '',
     baseURL: 'https://openai.com/v1/',
     metadata: {
       disableEditBaseURL: true,
@@ -34,6 +36,7 @@ export const predefinedChatProviders: ChatProvider[] = [
     },
   },
   {
+    apiKey: '',
     baseURL: '',
     metadata: {
       icon: 'simple-icons:openai',
