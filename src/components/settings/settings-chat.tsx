@@ -17,7 +17,7 @@ export const SettingsChat = () => {
   const badgeColor = isOnline ? 'green' : 'red'
   const badgeText = isOnline ? 'Online' : 'Offline'
 
-  const { models } = useListModels(chatProvider, [chatProvider])
+  const { error: modelsError, models } = useListModels(chatProvider, [chatProvider])
 
   return (
     <>
@@ -85,24 +85,38 @@ export const SettingsChat = () => {
         <Text as="div" mb="1" weight="bold">
           Chat Model
         </Text>
-        <Select.Root onValueChange={chatModel => setChatModel(chatModel)} value={chatModel ?? undefined}>
-          <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
-          <Select.Content position="popper">
-            {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
-          </Select.Content>
-        </Select.Root>
+        {/* eslint-disable-next-line @masknet/jsx-no-logical */}
+        {modelsError
+          ? (
+              <DebouncedTextField onBlurValueChange={setChatModel} value={chatModel} />
+            )
+          : (
+              <Select.Root onValueChange={setChatModel} value={chatModel}>
+                <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
+                <Select.Content position="popper">
+                  {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
+                </Select.Content>
+              </Select.Root>
+            )}
       </label>
 
       <label>
         <Text as="div" mb="1" weight="bold">
           Embed Model
         </Text>
-        <Select.Root onValueChange={embedModel => setEmbedModel(embedModel)} value={embedModel ?? undefined}>
-          <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
-          <Select.Content position="popper">
-            {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
-          </Select.Content>
-        </Select.Root>
+        {/* eslint-disable-next-line @masknet/jsx-no-logical */}
+        {modelsError
+          ? (
+              <DebouncedTextField onBlurValueChange={setEmbedModel} value={embedModel} />
+            )
+          : (
+              <Select.Root onValueChange={setEmbedModel} value={embedModel}>
+                <Select.Trigger placeholder="Pick a model" style={{ width: '100%' }} />
+                <Select.Content position="popper">
+                  {models.map(model => (<Select.Item key={model.id} value={model.id}>{model.id}</Select.Item>))}
+                </Select.Content>
+              </Select.Root>
+            )}
       </label>
     </>
   )
