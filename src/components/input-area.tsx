@@ -81,7 +81,7 @@ export const InputArea = ({ character }: { character?: typeof charactersTable.$i
           style={{ maxHeight: '50vh' }}
           variant="soft"
           {...register('content', { minLength: 1, required: true })}
-          onKeyDown={onKeyDownTextArea}
+          onKeyDown={handleKeyDown}
         />
         <Flex gap="2">
           <IconButton color="gray" disabled variant="soft">
