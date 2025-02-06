@@ -1,4 +1,6 @@
-import { message, type Message } from '@xsai/shared-chat'
+import type { Message } from '@xsai/shared-chat'
+
+import { message } from '@xsai/utils-chat'
 
 import type { Data } from './types'
 
