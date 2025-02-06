@@ -41,13 +41,13 @@ export const InputArea = ({ character }: { character?: typeof charactersTable.$i
     resetField('content')
     setIsTyping(true)
 
-    const { text } = await generateText({
+    const { messages: msgNew } = await generateText({
       ...chatProvider,
       messages: msg,
       model: chatModel,
     })
 
-    setMessages([...msg, { content: text, role: 'assistant' }])
+    setMessages(msgNew)
     setIsTyping(false)
   }
 
