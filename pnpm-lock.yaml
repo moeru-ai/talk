@@ -30,20 +30,20 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@xsai/generate-text':
-        specifier: ^0.1.0-beta.1
-        version: 0.1.0-beta.1
+        specifier: ^0.1.0-beta.2
+        version: 0.1.0-beta.2
       '@xsai/model':
-        specifier: ^0.1.0-beta.1
-        version: 0.1.0-beta.1
+        specifier: ^0.1.0-beta.2
+        version: 0.1.0-beta.2
       '@xsai/providers':
-        specifier: ^0.1.0-beta.1
-        version: 0.1.0-beta.1
+        specifier: ^0.1.0-beta.2
+        version: 0.1.0-beta.2
       '@xsai/shared-chat':
-        specifier: ^0.1.0-beta.1
-        version: 0.1.0-beta.1
+        specifier: ^0.1.0-beta.2
+        version: 0.1.0-beta.2
       '@xsai/utils-chat':
-        specifier: ^0.1.0-beta.1
-        version: 0.1.0-beta.1
+        specifier: ^0.1.0-beta.2
+        version: 0.1.0-beta.2
       drizzle-orm:
         specifier: ^0.38.4
         version: 0.38.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@types/react@19.0.7)(better-sqlite3@11.8.1)(react@19.0.0)
@@ -2941,23 +2941,23 @@ packages:
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
-  '@xsai/generate-text@0.1.0-beta.1':
-    resolution: {integrity: sha512-fnDwqfNb9FhkKUohdqrhCi0XENj343tAdJzUc9yMHkS+fetMx/drtjhgPnXTVWPtelBguDSn5Twegy3h34sMug==}
+  '@xsai/generate-text@0.1.0-beta.2':
+    resolution: {integrity: sha512-8YA/h/ccYNP5Efe8+IBHEeLuj5wmGUUClf24fEGlRt3IolJQUQ9fBeNFpDLkTZz14K/9zrVJmU0AIA434hdBVg==}
 
-  '@xsai/model@0.1.0-beta.1':
-    resolution: {integrity: sha512-Yacy4bgXeCl2OqfuB9cJ9nos4qiQEhenyVm1X7UuTuw5EwsMtiWsm/GuhQ64euxN3HPaWaY/tQnisdGWLpJDFw==}
+  '@xsai/model@0.1.0-beta.2':
+    resolution: {integrity: sha512-npVDUQMm1zdU9/hW/r9rdPHObnAFgoEhOb8Bl/kcAEwyxVJpVFc+0j2LIOF+4deWqua7ErFOWnxFIBbXYp/nqw==}
 
-  '@xsai/providers@0.1.0-beta.1':
-    resolution: {integrity: sha512-P6R4RXubq6VdmxqINTgM9ACzhcg7cj2oyoedapBOnol7iK0KJsgnGEZ7S4poAK7dG+1uj57njEtVLyVz7UpRrA==}
+  '@xsai/providers@0.1.0-beta.2':
+    resolution: {integrity: sha512-oZzalvpDwlbH/ZWGutUVW5hk2vfFmRdWeJjq+G/b134AFbIQvTy8ToMO8t2DBhAD11L2S72UU+dqJaN6op0R8A==}
 
-  '@xsai/shared-chat@0.1.0-beta.1':
-    resolution: {integrity: sha512-0Wo3Qls+2RIxNtwsesh4CuQXl3sSXWHw3Ylfc2P6Sn/LQND1PLlHjNfvmr+Zrw5KMZqhUDBvJkr/2+vwsHVP0Q==}
+  '@xsai/shared-chat@0.1.0-beta.2':
+    resolution: {integrity: sha512-TKXebI//Vrlus99bBU8bJwmYYbyjw4dP+2MJmjSl4ItnJ/FxOkws2hPLan9NBmqS0Su6xJDQ70M8/WBrDSmaFg==}
 
-  '@xsai/shared@0.1.0-beta.1':
-    resolution: {integrity: sha512-ekjsPdzgS40bunzhozk8L/kFDxiDdnw8p94yraO/AxNJv0Y2HIPKXcrRNqGDJwDtDja9vFSvXvuBhQAqyiYDyQ==}
+  '@xsai/shared@0.1.0-beta.2':
+    resolution: {integrity: sha512-3YA9Op8hGrY12wEIhLvZKIGfTALspCi/M/VIDF3ZpOF470wJbX7crqX29vEqmO14udzNXRszunBvcYMm6Xed8w==}
 
-  '@xsai/utils-chat@0.1.0-beta.1':
-    resolution: {integrity: sha512-+YyngnOXzJr2VU0XxdCxh2sTmlXZP4oXImaq45tWh0KNaRWALQAsRA31pvBozsM1wk8uKHEjCOENHUnT9V6CbA==}
+  '@xsai/utils-chat@0.1.0-beta.2':
+    resolution: {integrity: sha512-uhZ4goudfXQAXzh+/QfxCDSnMiHbEmfjHCWVVW5jzq0KwCb4tx5m8v4qqsagOTrtyPG494iaqatkORSKJzqIPg==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -8810,27 +8810,27 @@ snapshots:
 
   '@vue/shared@3.5.13': {}
 
-  '@xsai/generate-text@0.1.0-beta.1':
+  '@xsai/generate-text@0.1.0-beta.2':
     dependencies:
-      '@xsai/shared-chat': 0.1.0-beta.1
+      '@xsai/shared-chat': 0.1.0-beta.2
 
-  '@xsai/model@0.1.0-beta.1':
+  '@xsai/model@0.1.0-beta.2':
     dependencies:
-      '@xsai/shared': 0.1.0-beta.1
+      '@xsai/shared': 0.1.0-beta.2
 
-  '@xsai/providers@0.1.0-beta.1':
+  '@xsai/providers@0.1.0-beta.2':
     dependencies:
-      '@xsai/shared': 0.1.0-beta.1
+      '@xsai/shared': 0.1.0-beta.2
 
-  '@xsai/shared-chat@0.1.0-beta.1':
+  '@xsai/shared-chat@0.1.0-beta.2':
     dependencies:
-      '@xsai/shared': 0.1.0-beta.1
+      '@xsai/shared': 0.1.0-beta.2
 
-  '@xsai/shared@0.1.0-beta.1': {}
+  '@xsai/shared@0.1.0-beta.2': {}
 
-  '@xsai/utils-chat@0.1.0-beta.1':
+  '@xsai/utils-chat@0.1.0-beta.2':
     dependencies:
-      '@xsai/shared-chat': 0.1.0-beta.1
+      '@xsai/shared-chat': 0.1.0-beta.2
 
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
